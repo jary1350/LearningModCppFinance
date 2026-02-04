@@ -22,7 +22,7 @@ std::vector<double> EquityPriceGenerator::operator()(int seed) const
 	std::mt19937_64 mt(seed);
 	std::normal_distribution<> nd;
 
-	auto new_price = [this](double previous_equity_price, double norm)
+	auto new_price = [*this](double previous_equity_price, double norm)
 	{
 		double price{0.0};
 
