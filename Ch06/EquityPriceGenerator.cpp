@@ -20,8 +20,8 @@ double EquityPriceGenerator::generate_new_price(double previous_equity_price, do
 	double price{0.0};
 
 	double exp_arg_01 = (rf_rate_ - div_rate_ - 
-		((volatility_ * volatility_) / 2.0)) * dt_;
-	double exp_arg_02 = volatility_ * norm * sqrt(dt_);
+		((volatility_ * volatility_) / 2.0)) * dt_; // risk-neutral drift term
+	double exp_arg_02 = volatility_ * norm * sqrt(dt_); // diffusion term
 	price = previous_equity_price * std::exp(exp_arg_01 + exp_arg_02);
 
 	return price;
